@@ -1,0 +1,18 @@
+[project]
+name = "multi-tool-ai-agent"
+version = "0.1.0"
+description = "A tool-calling AI agent with web search, weather and SQL database tools, and a Next.js chat UI."
+requires-python = ">=3.11"
+
+[tool.setuptools]
+packages = ["toolagent", "toolagent.tools", "mock_services"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+[batch_insert]
+enabled = true
+[handle_error]
+enabled = true
