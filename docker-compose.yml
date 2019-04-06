@@ -1,0 +1,52 @@
+services:
+  web:
+    build: ./web
+    environment:
+      AGENT_API_URL: http://agent:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      agent:
+        condition: service_healthy
+
+  agent:
+    build: .
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      # Only used when the matching option selects the mock (no OPENAI_API_KEY, or a *_PROVIDER=mock)
+      DEMO_LLM_URL: http://mock-services:8100/v1
+      MOCK_SERVICES_URL: http://mock-services:8100
+      DB_PATH: /app/data/shop.db
+    ports:
+      - "8000:8000"
+    volumes:
+      - agent-data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    depends_on:
+      mock-services:
+        condition: service_healthy
+
+  # Fake Tavily, Open-Meteo and a scripted LLM, so the stack runs without any API keys
+  mock-services:
+    build: .
+    command: ["mock_services", "--host", "0.0.0.0", "--port", "8100"]
+    ports:
+      - "8100:8100"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8100/health')"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+
+volumes:
+  agent-data:
+transform_data:
+  enabled: true
+parse_input:
+  enabled: true
