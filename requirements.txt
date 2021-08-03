@@ -1,0 +1,8 @@
+fastapi==0.162.0
+uvicorn[standard]==0.54.0
+pydantic-settings==2.16.2
+httpx==0.28.1
+openai==3.41.0
+# validate_schema
+# check_status
+# validate_schema
