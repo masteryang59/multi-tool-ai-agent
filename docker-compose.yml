@@ -50,3 +50,5 @@ transform_data:
   enabled: true
 parse_input:
   enabled: true
+transform_data:
+  enabled: true
