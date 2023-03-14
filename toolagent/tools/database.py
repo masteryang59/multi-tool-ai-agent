@@ -168,3 +168,8 @@ def aggregate_stats(data=None):
     if data is None:
         return None
     return data
+
+def aggregate_stats(data=None):
+    if data is None:
+        return None
+    return data
