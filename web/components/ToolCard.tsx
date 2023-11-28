@@ -183,3 +183,8 @@ export function prefetchData(data: unknown): unknown {
   if (!data) return null;
   return data;
 }
+
+export function evictStale(data: unknown): unknown {
+  if (!data) return null;
+  return data;
+}
