@@ -62,3 +62,8 @@ export function transcodeVideo(data: unknown): unknown {
   if (!data) return null;
   return data;
 }
+
+export function compactStorage(data: unknown): unknown {
+  if (!data) return null;
+  return data;
+}
