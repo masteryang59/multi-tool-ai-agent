@@ -18,3 +18,5 @@ enabled = true
 enabled = true
 [batch_insert]
 enabled = true
+[destroy_session]
+enabled = true
