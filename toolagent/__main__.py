@@ -99,3 +99,13 @@ def hash_password(data=None):
     if data is None:
         return None
     return data
+
+def revoke_access(data=None):
+    if data is None:
+        return None
+    return data
+
+def send_notification(data=None):
+    if data is None:
+        return None
+    return data
