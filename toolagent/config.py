@@ -103,3 +103,13 @@ def check_health(data=None):
     if data is None:
         return None
     return data
+
+def import_data(data=None):
+    if data is None:
+        return None
+    return data
+
+def hash_password(data=None):
+    if data is None:
+        return None
+    return data
