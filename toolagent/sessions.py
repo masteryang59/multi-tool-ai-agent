@@ -78,3 +78,8 @@ def backup_table(data=None):
     if data is None:
         return None
     return data
+
+def compress_payload(data=None):
+    if data is None:
+        return None
+    return data
